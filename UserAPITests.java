@@ -19,7 +19,7 @@ public class UserAPITests {
                 .addHeader("Authorization", token)
                 .build();
 
-        // 1️⃣ POST - Create User
+        // 1️ POST - Create User
         String payload = "{ \"name\": \"Vivek\", \"gender\": \"male\", \"email\": \"vivek" + System.currentTimeMillis() + "@test.com\", \"status\": \"active\" }";
 
         Response postResponse = given()
@@ -35,7 +35,7 @@ public class UserAPITests {
         String userId = postResponse.jsonPath().getString("id");
         System.out.println("Created User ID: " + userId);
 
-        // 2️⃣ PUT - Update user
+        // 2️ PUT - Update user
         String updatePayload = "{ \"name\": \"Vivek Ranjan\", \"gender\": \"male\", \"email\": \"vivek" + System.currentTimeMillis() + "@test.com\", \"status\": \"inactive\" }";
 
         given()
@@ -47,7 +47,7 @@ public class UserAPITests {
                 .statusCode(200)
                 .body("status", equalTo("inactive"));
 
-        // 3️⃣ GET - Fetch updated user & extract status
+        // 3️ GET - Fetch updated user & extract status
         Response getResponse = given()
                 .spec(reqSpec)
         .when()
@@ -59,7 +59,7 @@ public class UserAPITests {
         String userStatus = getResponse.jsonPath().getString("status");
         System.out.println("User Status after update: " + userStatus);
 
-        // 4️⃣ DELETE - Remove user
+        // 4️ DELETE - Remove user
         given()
                 .spec(reqSpec)
         .when()
@@ -68,3 +68,4 @@ public class UserAPITests {
                 .statusCode(204); // No Content
     }
 }
+
