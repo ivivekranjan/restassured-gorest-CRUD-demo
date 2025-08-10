@@ -17,7 +17,7 @@ It includes **POST, PUT, GET, and DELETE** requests along with **status code ass
 ---
 
 ## 🛠 Tech Stack
-- **Java** 8+
+- **Java** 17
 - **RestAssured** (latest)
 - **TestNG** (for test execution)
 - **Maven** (dependency management)
